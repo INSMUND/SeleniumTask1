@@ -3,7 +3,11 @@ package FirstTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
+import managers.WebDriverManager;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestLoginPage extends TestBase {
@@ -20,4 +24,3 @@ public class TestLoginPage extends TestBase {
 		Assert.assertEquals(driver.getTitle(), "My Store");
 	}
 }
-

@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import enums.DriverType;
+
 
 public class ConfigFileReader {
 	private Properties properties;
@@ -34,6 +36,29 @@ public class ConfigFileReader {
 			return driverPath;
 		else
 			throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
+	}
+	
+	
+	public String getDriverPathFirefox() {
+		String driverPath = properties.getProperty("driverPathFirefox");
+		if (driverPath != null)
+			return driverPath;
+		else
+			throw new RuntimeException("driverPath not specified in the Configuration.properties file.");
+	}
+
+	
+	public DriverType getBrowser() {
+		String browserName = properties.getProperty("browser");
+		if (browserName == null || browserName.equalsIgnoreCase("CHROME"))
+			return DriverType.CHROME;
+		else if (browserName.equalsIgnoreCase("FIREFOX"))
+			return DriverType.FIREFOX;
+		else if (browserName.equalsIgnoreCase("IEXPLORER"))
+			return DriverType.IEXPLORER;
+		else
+			throw new RuntimeException(
+					"Browser Name Key value in Configuration.properties is not matched : " + browserName);
 	}
 	
 	public long getImplicitlyWait() {
