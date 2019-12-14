@@ -18,8 +18,10 @@ public class TestStickersArePresented extends TestBase {
 			String xpathProduct = "(//li[@class='product column shadow hover-light'])" + "[" + i + "]";
 			WebElement Product = driver.findElement(By.xpath(xpathProduct));
 			Assert.assertTrue(Product.isDisplayed());
-			String xpathProductTitle = "(//li[@class='product column shadow hover-light'])" + "[" + i + "]"+"//div[@class='name']";
-			System.out.println("Web element " + driver.findElement(By.xpath(xpathProductTitle)).getText() + " is found");
+			String xpathProductTitle = "(//li[@class='product column shadow hover-light'])" + "[" + i + "]"
+					+ "//div[@class='name']";
+			System.out
+					.println("Web element " + driver.findElement(By.xpath(xpathProductTitle)).getText() + " is found");
 			String xpathProductSticker = "(//li[@class='product column shadow hover-light'])" + "[" + i + "]"
 					+ "//div[contains(@class,'sticker')]";
 			WebElement ProductSticker = driver.findElement(By.xpath(xpathProductSticker));
