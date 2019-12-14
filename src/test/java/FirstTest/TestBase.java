@@ -16,14 +16,17 @@ public class TestBase {
 		webDriverManager = new WebDriverManager();
 		driver=webDriverManager.getDriver();
 		configFileReader=new ConfigFileReader();
-		login();
+		
 			}
-	public void login() {
-		   driver.get(configFileReader.getApplicationUrl());
-		 	//	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	public void loginAdmin() {
+		   driver.get(configFileReader.getApplicationUrlAdmin());		 	
 		   driver.findElement(By.name("username")).sendKeys("admin");
 		   driver.findElement(By.name("password")).sendKeys("admin");
 		   driver.findElement(By.name("login")).click();
+		 		System.out.println("Title of opened page is:"+driver.getTitle());
+	}
+	public void loginLitecart() {
+		   driver.get(configFileReader.getApplicationUrlLitecart());			  
 		 		System.out.println("Title of opened page is:"+driver.getTitle());
 	}
 

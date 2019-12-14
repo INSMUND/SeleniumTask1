@@ -15,7 +15,7 @@ public class TestLoginPage extends TestBase {
 	@Test
 	public void loginPageTest() {
 
-		driver.get(configFileReader.getApplicationUrl());
+		driver.get(configFileReader.getApplicationUrlAdmin());
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.findElement(By.name("username")).sendKeys("admin");
 		driver.findElement(By.name("password")).sendKeys("admin");

@@ -11,7 +11,7 @@ public class TestAdminSidebar extends TestBase {
 
 	@Test
 	public void adminSidebarTest() {
-
+		loginAdmin();
 		List<WebElement> listOfMenuItems = driver.findElements(By.xpath("//ul[@id='box-apps-menu']/li"));
 		for (int i = 1; i <= listOfMenuItems.size(); i++) {
 			String xpathMenuItem = "(//ul[@id='box-apps-menu']/li)" + "[" + i + "]";

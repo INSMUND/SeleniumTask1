@@ -71,8 +71,15 @@ public class ConfigFileReader {
 
 	
 
-	public String getApplicationUrl() {
-		String baseUrl = properties.getProperty("baseUrl");
+	public String getApplicationUrlAdmin() {
+		String baseUrl = properties.getProperty("baseUrlAdmin");
+		if (baseUrl != null)
+			return baseUrl;
+		else
+			throw new RuntimeException("base url is not specified in the Configuration.properties file.");
+	}
+	public String getApplicationUrlLitecart() {
+		String baseUrl = properties.getProperty("baseUrlLitecart");
 		if (baseUrl != null)
 			return baseUrl;
 		else
