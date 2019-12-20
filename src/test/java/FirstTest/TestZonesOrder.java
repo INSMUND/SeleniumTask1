@@ -14,9 +14,7 @@ public class TestZonesOrder extends TestBase {
 		loginAdmin();
 		driver.findElement(By.xpath("//td[@id='sidebar']//li[6]")).click();
 		List<WebElement> listOfCountries = driver.findElements(By.xpath("//form[@name='geo_zones_form']//tr"));
-
 		for (int i = 2; i <= listOfCountries.size() - 1; i++) {
-
 			String xpathCurrentCountryZonesLink = "//form[@name='geo_zones_form']//tr" + "[" + i + "]" + "//td[5]/a";
 			String link = driver.findElement(By.xpath(xpathCurrentCountryZonesLink)).getAttribute("href");
 			driver.get(link);
