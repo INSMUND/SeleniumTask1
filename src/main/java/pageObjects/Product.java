@@ -11,7 +11,7 @@ public class Product {
 	By productName = By.xpath("//h1[@class='title']");
 	By regularPrice = By.xpath("//s[@class='regular-price']");
 	By actionPrice = By.xpath("//strong[@class='campaign-price']");
-
+	
 	public Product(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -56,10 +56,8 @@ public class Product {
 		return fontSize.replace("px", "").trim();
 	}
 	
-	public String getTextDecorationRegularPrice() {
-		String textDecoration=driver.findElement(regularPrice).getCssValue("text-decoration");
+	public String getTextDecorationRegularPrice() {		
 		String[] textDecorationValues = driver.findElement(regularPrice).getCssValue("text-decoration").split(" ");
 		return textDecorationValues[0].trim();
 	}
-
 }
