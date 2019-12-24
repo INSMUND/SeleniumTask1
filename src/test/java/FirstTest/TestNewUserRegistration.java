@@ -43,7 +43,7 @@ public class TestNewUserRegistration extends TestBase {
 		login();		
 		WebElement logoutExistingUser=driver.findElement(By.xpath("//div[@id='box-account']//a[contains(text(),'Logout')]"));
 		Assert.assertTrue(logoutExistingUser.isDisplayed());
-		System.out.println("Existing can login");
+		System.out.println("Existing user can login");
 		driver.get(logoutExistingUser.getAttribute("href"));		
        
 	}

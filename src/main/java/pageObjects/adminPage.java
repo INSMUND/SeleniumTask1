@@ -8,24 +8,25 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class adminPage {
+public class AdminPage {
 	 WebDriver driver;
 
-	    @FindBy(name="uid")
-	    WebElement user99GuruName;
-
-	    @FindBy(name="password")
-	    WebElement password99Guru; 
+	  
 	    
 	    List<WebElement> listOfElements = driver.findElements(By.xpath("//td[@id='sidebar']//li"));
-	
-	  
+	    
+	    By catalogButton = By.xpath("//td[@id='sidebar']//li[2]");
+	    		
 	   
 	    
-	    public adminPage(WebDriver driver){
+	    public AdminPage(WebDriver driver){
 	    	this.driver = driver;    
 	        PageFactory.initElements(driver, this);
 	    }
+	    
+	    public WebElement getCatalogButton() {
+			return driver.findElement(catalogButton);
+		}
 
 
 }
