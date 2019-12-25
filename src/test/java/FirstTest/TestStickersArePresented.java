@@ -12,21 +12,16 @@ public class TestStickersArePresented extends TestBase {
 	@Test
 	public void stickersArePresentedTest() {
 		loginLitecart();
-		List<WebElement> listOfProducts = driver
-				.findElements(By.xpath("//li[@class='product column shadow hover-light']"));
-		for (int i = 1; i <= listOfProducts.size(); i++) {
-			String xpathProduct = "(//li[@class='product column shadow hover-light'])" + "[" + i + "]";
-			WebElement Product = driver.findElement(By.xpath(xpathProduct));
-			Assert.assertTrue(Product.isDisplayed());
-			String xpathProductTitle = "(//li[@class='product column shadow hover-light'])" + "[" + i + "]"
-					+ "//div[@class='name']";
-			System.out
-					.println("Web element " + driver.findElement(By.xpath(xpathProductTitle)).getText() + " is found");
-			String xpathProductSticker = "(//li[@class='product column shadow hover-light'])" + "[" + i + "]"
-					+ "//div[contains(@class,'sticker')]";
-			WebElement ProductSticker = driver.findElement(By.xpath(xpathProductSticker));
-			Assert.assertTrue(ProductSticker.isDisplayed());
-			System.out.println("Product sticker  " + ProductSticker.getText() + "  for element is displayed");
+		List<WebElement> listOfProducts = driver.findElements(By.xpath("//li[contains(@class,'product')]/a[@class='link']"));
+		for (int i = 0; i < listOfProducts.size(); i++) {
+			WebElement product = listOfProducts.get(i);
+			Assert.assertTrue(product.isDisplayed());
+			String productTitle = product.getAttribute("title");
+			System.out.println("Web element " + productTitle + " is found");
+			List<WebElement> listOfStickers = product.findElements(By.xpath(".//div[contains(@class,'sticker')]"));
+			int quantityOfStickersOnCurrentElement = listOfStickers.size();
+			System.out.println("Product " + productTitle + "  has " + quantityOfStickersOnCurrentElement + "stickers");
+			Assert.assertTrue(quantityOfStickersOnCurrentElement < 2);
 		}
 	}
 
