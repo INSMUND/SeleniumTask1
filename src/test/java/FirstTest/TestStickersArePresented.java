@@ -20,8 +20,9 @@ public class TestStickersArePresented extends TestBase {
 			System.out.println("Web element " + productTitle + " is found");
 			List<WebElement> listOfStickers = product.findElements(By.xpath(".//div[contains(@class,'sticker')]"));
 			int quantityOfStickersOnCurrentElement = listOfStickers.size();
-			System.out.println("Product " + productTitle + "  has " + quantityOfStickersOnCurrentElement + "stickers");
-			Assert.assertTrue(quantityOfStickersOnCurrentElement < 2);
+			System.out.println("Product " + productTitle + "  has " + quantityOfStickersOnCurrentElement + " stickers");
+			Assert.assertTrue(quantityOfStickersOnCurrentElement ==1);
+			System.out.println("On main page all products have only 1 sticker");
 		}
 	}
 
