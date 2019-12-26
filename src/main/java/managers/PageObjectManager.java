@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import pageObjects.Product;
 import pageObjects.AddNewProductPage;
+import pageObjects.CartPage;
 import pageObjects.CreateAccountPage;
 import pageObjects.MainPageProduct;
 
@@ -13,6 +14,7 @@ public class PageObjectManager {
 	private CreateAccountPage createAccountPage ;
 	private Product product;
 	private AddNewProductPage addNewProductPage;
+	private CartPage cartPage;
 	
 
 	public PageObjectManager(WebDriver driver) {
@@ -31,6 +33,11 @@ public class PageObjectManager {
 	public CreateAccountPage getCreateAccountPage() {
 		return (createAccountPage == null) ? createAccountPage = new CreateAccountPage(driver)
 				: createAccountPage;
+	}
+	
+	public CartPage getCartPage() {
+		return (cartPage == null) ? cartPage = new CartPage(driver)
+				: cartPage;
 	}
 	
 	public AddNewProductPage getAddNewProductPage() {

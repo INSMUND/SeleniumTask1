@@ -18,24 +18,24 @@ public class TestEditCatalogCountriesActiveFrames extends TestBase {
 	public void editCatalogCountriesActiveFramesTest() {
 		loginAdmin();
 		driver.findElement(By.xpath("(//ul[@id='box-apps-menu']/li)[3]")).click();
-		WebDriverWait wait = new WebDriverWait(driver,30);			
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@class='dataTable']//tr[2]/td[7]")));
-		
+
 		driver.findElement(By.xpath("//table[@class='dataTable']//tr[2]/td[7]")).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),' Edit Country')]")));
-		
+
 		mainPageHandle = driver.getWindowHandle();
-		
+
 		List<WebElement> listOfElementsToNewTabByClick = driver
 				.findElements(By.xpath("//td[@id='content']//tr//a[@target='_blank']"));
-		for (int i = 0; i < listOfElementsToNewTabByClick.size(); i++) {			
+		for (int i = 0; i < listOfElementsToNewTabByClick.size(); i++) {
 			newOpenTabCodeTest(listOfElementsToNewTabByClick.get(i));
-			}
+		}
 	}
 
 	private void newOpenTabCodeTest(WebElement currentElement) {
 		currentElement.click();
-		System.out.println("Link by element "+currentElement.getText()+" was performed");
+		System.out.println("Link by element " + currentElement.getText() + " was performed");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		ArrayList<String> tabHandles = new ArrayList<String>(driver.getWindowHandles());
 		boolean newTabFound = false;

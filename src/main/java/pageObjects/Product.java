@@ -5,6 +5,8 @@ import java.util.HashMap;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Product {
 	WebDriver driver;
@@ -13,6 +15,7 @@ public class Product {
 	By actionPrice = By.xpath("//strong[@class='campaign-price']");
 	By addCartProduct = By.xpath("//button[@name='add_cart_product']");
 	By optionsSize = By.xpath("//select[@name='options[Size]']");
+	By homeLink=By.xpath("//div[@class='content']//a[@href='/litecart/']");
 
 	public Product(WebDriver driver) {
 		this.driver = driver;
@@ -36,6 +39,10 @@ public class Product {
 
 	public WebElement getAddCartProduct() {
 		return driver.findElement(addCartProduct);
+	}
+	
+	public WebElement getHomeLink() {
+		return driver.findElement(homeLink);
 	}
 
 	public HashMap<String, String> getRGBColorsValuesActionPrice() {
@@ -72,4 +79,30 @@ public class Product {
 		String[] textDecorationValues = driver.findElement(regularPrice).getCssValue("text-decoration").split(" ");
 		return textDecorationValues[0].trim();
 	}
+	public void fillSizeIfRequired(String size) {
+		try {
+			getOptionsSize().sendKeys("Small");
+		} catch (Exception e) {
+			System.out.println("Product without Sale sticker was selected");
+		}
+	}
+	public void addToCart() {
+		int initialCartSize=getQuantityProductsOnCart();
+		getAddCartProduct().click();
+		WebDriverWait wait = new WebDriverWait(driver, 100);
+		wait.until(ExpectedConditions.textToBePresentInElementLocated(
+				By.xpath("//div[@id='cart']//span[@class='quantity']"), Integer.toString(initialCartSize+1)));
+		System.out.println("Product" + getProductName().getText() + "successfully added to cart");
+	}
+	
+   public int getQuantityProductsOnCart(){
+	   String quantity=driver.findElement(By.xpath("//div[@id='cart']//span[@class='quantity']")).getText();
+	   int quantityValue=Integer.parseInt(quantity);
+	   return quantityValue;
+   }
+   
+   public void goToHomePage() {
+	   getHomeLink().click();
+   }
+   
 }

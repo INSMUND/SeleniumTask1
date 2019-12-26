@@ -1,10 +1,13 @@
 package pageObjects;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import managers.PageObjectManager;
 
 public class MainPageProduct {
 	WebDriver driver;
@@ -88,5 +91,13 @@ public class MainPageProduct {
 	public String getTextDecorationRegularPrice() {
 		String[] textDecorationValues = driver.findElement(regularPrice).getCssValue("text-decoration").split(" ");
 		return textDecorationValues[0].trim();
+	}
+	
+	public void selectProductFromMostPopular() {
+		driver.findElement(By.xpath("//div[@id='box-most-popular']//li[1]")).click();	
+		   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	public void navigateToCartPage() {
+		getCheckout().click();
 	}
 }
