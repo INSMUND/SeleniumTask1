@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import managers.PageObjectManager;
 
@@ -94,6 +96,8 @@ public class MainPageProduct {
 	}
 	
 	public void selectProductFromMostPopular() {
+		WebDriverWait wait = new WebDriverWait(driver, 10/*seconds*/);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='box-most-popular']//li[1]")));
 		driver.findElement(By.xpath("//div[@id='box-most-popular']//li[1]")).click();	
 		   driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}

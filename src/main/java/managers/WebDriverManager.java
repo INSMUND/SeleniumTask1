@@ -5,6 +5,7 @@ import java.util.logging.Level;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
@@ -39,7 +40,7 @@ public class WebDriverManager {
 	      break;
 	        case CHROME : 	        	
 	         System.setProperty(CHROME_DRIVER_PROPERTY, new ConfigFileReader().getDriverPathChrome());	          
-	            driver = new ChromeDriver();
+	            driver = new ChromeDriver(new ChromeOptions().setExperimentalOption("w3c", false));
 	     break;
 	      	        }
 	 
